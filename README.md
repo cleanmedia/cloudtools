@@ -2,10 +2,9 @@
 make working with or in the cloud easier
 
 ## Install
-
-'''bash
+```bash
 git clone https://github.com/cleanmedia/cloudtools.git
-'''
+```
 
 By the way, the short name 'abu' means AWS Backup.
 
@@ -26,28 +25,27 @@ By the way, the short name 'abu' means AWS Backup.
 ## Examples
 
 Show the contents of my backup bucket:
-'''bash
+```bash
 abu s
-'''
+```
 
 Compress and encrypt the current local directory, name it dirname and send it to the S3 bucket.
-'''bash
+```bash
 abu b dirname
-'''
+```
 
 Restore the object dirname.7z from the S3 bucket to the local directory and decrypt it.
-'''bash
+```bash
 abu r dirname
-'''
+```
 
 Delete th S3 object dirname.7z from the backup bucket.
-'''bash
+```bash
 abu d dirname
-'''
+```
 
 
 Compress the local directory only and encrypt it and store it as dirname.7z.
-'''bash
+```bash
 abu c dirname
-'''
-
+```
