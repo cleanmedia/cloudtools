@@ -12,7 +12,7 @@ usage() {
   echo "usage:"
   echo
   echo "abu s         # show objects in my abu folder backup bucket"
-  echo "abu c objname # compress and encrypt only my local folder into objname.7z"
+  echo "abu c objname # compress and encrypt only my local folder into ../objname.7z"
   echo "abu b objname # backup (compress/encrypt) local folder and store it in S3 backup bucket objname.7z"
   echo "abu d objname # delete objname.7z from S3 backup bucket"
   echo "abu r objname # restore objname.7z from S3 folder backup bucket and decrypt/decompress it into the current local folder"
@@ -51,9 +51,9 @@ check_pin() {
 
 compressdir() {
   check_pin
-  tar czvf ${NAM}.tgz . --exclude=.terraform --exclude-vcs-ignores
-  7z a -p${PIN} ${NAM}.7z ${NAM}.tgz
-  rm ${NAM}.tgz
+  tar czvf ../${NAM}.tgz . --exclude=.terraform --exclude-vcs-ignores
+  7z a -p${PIN} ${NAM}.7z ../${NAM}.tgz
+  rm ../${NAM}.tgz
 }
 
 sends3() {
