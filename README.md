@@ -4,22 +4,24 @@ make working with or in the cloud easier and more confidential
 ## Install All
 ```bash
 git clone https://github.com/cleanmedia/cloudtools.git
+mkdir -p /usr/local/bin
+cd cloudtools; cp abu setpin filecrypt /usr/local/bin/
 ```
 
-## source spi: Set PIN - without traces
+## source setpin: Set PIN - without traces
 
 ### Example
 
 Put a Password (PIN) into the bash environment - without leaving traces:
 ```bash
-source spi
+source setpin
 ```
 
 * It will ask for a new PIN, if the bash variable $PIN is empty.
 * Otherwise it will confirm, that the PIN was already set priviously.
 
 
-## fcr: File Crypt - Script to compress-encrypt/check/decompress-decrypt a File
+## filecrypt: File Crypt - Script to compress-encrypt/check/decompress-decrypt a File
 
 ### Example
 
@@ -29,7 +31,7 @@ source spi
 * store the file as filename.enc.7z
 
 ```bash
-fcr e filename
+filecrypt e filename
 ```
 
 * Decompress/Decrypt filename.enc.7z
@@ -38,7 +40,7 @@ fcr e filename
 * delete filename.enc.7z
 
 ```bash
-fcr d filename.enc.7z
+filecrypt d filename.enc.7z
 ```
 
 
@@ -56,7 +58,7 @@ fcr d filename.enc.7z
 * As for example Ablibtnlaci10t!
 * Meaning the initials of the sentence:
 * A bad life is better than no life and can improve 10 times!
-* You can use the command "source spi" to set the PIN only once and reuse it many times.
+* You can use the command "source setpin" to set the PIN only once and reuse it many times.
 
 ### Examples
 

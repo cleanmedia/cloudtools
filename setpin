@@ -3,7 +3,7 @@
 set +x
 
 usage() {
-  echo "usage: spi"
+  echo "usage: setpin"
   echo "description: set pin in env without traces"
   exit 1
 }

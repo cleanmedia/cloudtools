@@ -8,7 +8,7 @@ set +x
 
 usage() {
   echo "usage: abu [scbdr] <dirname>"
-  echo "means [show|compress and encrypt only|backup local dir to s3|delete on s3|restore from s3]"
+  echo "descr: aws backup [show|compress and encrypt only|backup local dir to s3|delete on s3|restore from s3]"
   exit 1
 }
 

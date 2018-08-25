@@ -6,7 +6,7 @@ FIL=$2
 set +x
 
 usage() {
-  echo "usage: fcr [edc] <filname>"
+  echo "usage: filecrypt [edc] <filname>"
   echo "description: [encrypt|decrypt|check] filename"
   exit 1
 }
