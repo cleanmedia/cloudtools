@@ -69,24 +69,24 @@ Show the objects (content) of my backup bucket:
 abu s
 ```
 
-Compress and encrypt the current local directory, and send it as dirname.7z to the S3 bucket.
+Compress and encrypt the current local directory, and send it as objname.7z to the S3 bucket.
 ```bash
-abu b dirname
+abu b objname
 ```
 
-Restore the object dirname.7z from the S3 bucket to the local directory and decrypt/unpack it.
+Restore the object objname.7z from the S3 bucket to the local directory and decrypt/unpack it.
 ```bash
-abu r dirname
+abu r objname
 ```
 
-Delete th S3 object dirname.7z from the backup bucket.
+Delete th S3 object objname.7z from the backup bucket.
 ```bash
-abu d dirname
+abu d objname
 ```
 
-Compress the local directory only and encrypt it and store it as dirname.7z.
+Compress the local directory only and encrypt it and store it as objname.7z.
 ```bash
-abu c dirname
+abu c objname
 ```
 
 
