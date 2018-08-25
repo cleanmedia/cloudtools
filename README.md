@@ -52,7 +52,7 @@ filecrypt d filename.enc.7z
 * some kind of Linux and the AWS CLI package
 * define ~/.aws/config defaults
 * A bucket for those backups only:
-* aws s3 mb s3://${my-global-backup-bucket-name}
+* aws s3 mb s3://${my-global-folder-backup-bucket-name}
 * Edit your global bucket name vaiable 'BUCK' in the file abu.
 * Have a PIN ready in your mind, that you don't forget but is safe and unique.
 * As for example Ablibtnlaci10t!
@@ -62,17 +62,17 @@ filecrypt d filename.enc.7z
 
 ### Examples
 
-Show the contents of my backup bucket:
+Show the objects (content) of my backup bucket:
 ```bash
 abu s
 ```
 
-Compress and encrypt the current local directory, name it dirname and send it to the S3 bucket.
+Compress and encrypt the current local directory, and send it as dirname.7z to the S3 bucket.
 ```bash
 abu b dirname
 ```
 
-Restore the object dirname.7z from the S3 bucket to the local directory and decrypt it.
+Restore the object dirname.7z from the S3 bucket to the local directory and decrypt/unpack it.
 ```bash
 abu r dirname
 ```

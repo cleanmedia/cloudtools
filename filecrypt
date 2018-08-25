@@ -1,4 +1,6 @@
 #!/bin/bash
+# author: Renato Mercurio, 2018
+# descr: wrapper over Igor Pavlov's 7z to protect secrets in files
 
 CMD=$1
 FIL=$2

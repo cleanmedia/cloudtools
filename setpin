@@ -1,30 +1,9 @@
 #!/bin/bash
+# author: Renato Mercurio, 2018
+# descr: set pin in env without traces
 
-set +x
+echo "Enter PIN:"
+read -s PIN
 
-usage() {
-  echo "usage: setpin"
-  echo "description: set pin in env without traces"
-  exit 1
-}
-
-ask_pin() {
-  echo "Enter PIN:"
-  read -s PIN
-}
-
-check_pin() {
-  if [ "$PIN" == "" ]; then
-    ask_pin
-    echo "New PIN activated"
-  else
-    echo "PIN was already set"
-  fi
-}
-
-
-# BEGIN MAIN SCRIPT
-
-check_pin
 export PIN
 
