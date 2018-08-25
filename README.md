@@ -8,7 +8,8 @@ mkdir -p /usr/local/bin
 cd cloudtools; sudo cp abu setpin filecrypt /usr/local/bin/
 ```
 
-## source setpin: Set PIN - without traces
+## source setpin
+Set PIN - without traces
 
 ### Example
 
@@ -20,7 +21,8 @@ source setpin
 * It will ask for the new PIN to be put into the environment.
 
 
-## filecrypt: File Crypt - Script to compress-encrypt/check/decompress-decrypt a File
+## filecrypt
+File Crypt - Script to compress-encrypt/check/decompress-decrypt a File
 
 ### Example
 
@@ -43,7 +45,8 @@ filecrypt d filename.enc.7z
 ```
 
 
-## abu: AWS Backup - Local Directory to S3
+## abu
+AWS Backup - Local Directory to S3
 
 ### Prerequisites
 
