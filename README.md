@@ -17,8 +17,7 @@ Put a Password (PIN) into the bash environment - without leaving traces:
 source setpin
 ```
 
-* It will ask for a new PIN, if the bash variable $PIN is empty.
-* Otherwise it will confirm, that the PIN was already set priviously.
+* It will ask for the new PIN to be put into the environment.
 
 
 ## filecrypt: File Crypt - Script to compress-encrypt/check/decompress-decrypt a File
