@@ -1,0 +1,74 @@
+#!/bin/bash
+
+CMD=$1
+FIL=$2
+
+BUCK=cmabu
+set +x
+
+usage() {
+  echo "usage: ccr [edc] <filname>"
+  echo "means [encrypt|decrypt|check] filename"
+  exit 1
+}
+
+check_input() {
+  if [ "$CMD" == "" ]; then
+    usage
+  fi
+
+  if [ "$FIL" == "" ]; then
+    usage
+  fi
+}
+
+ask_pin() {
+  echo "Enter PIN:"
+  read -s PIN
+}
+
+check_pin() {
+  if [ "$PIN" == "" ]; then
+    ask_pin
+  fi
+}
+
+encrypt() {
+  7z a -p${PIN} ${FIL}.enc.7z ${FIL}
+  if [ "$?" == "0" ]; then
+    rm ${FIL}
+  fi
+}
+
+decrypt() {
+  OUT=$(dirname $FIL)
+  NAM=$(basename $FIL)
+  cd $OUT
+  7z e -y -p${PIN} ${NAM}
+  if [ "$?" == "0" ]; then
+    rm ${NAM}
+  fi
+  cd -
+}
+
+check() {
+  7z l -p${PIN} ${FIL}
+}
+
+
+# BEGIN MAIN SCRIPT
+
+check_input
+check_pin
+
+case "$CMD" in
+  e) encrypt
+     ;;
+  l) check
+     ;;
+  d) decrypt
+     ;;
+  *) usage
+     ;;
+esac
+
