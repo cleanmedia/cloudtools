@@ -5,7 +5,7 @@ make working with or in the cloud easier and more confidential
 ```bash
 git clone https://github.com/cleanmedia/cloudtools.git
 mkdir -p /usr/local/bin
-cd cloudtools; cp abu setpin filecrypt /usr/local/bin/
+cd cloudtools; sudo cp abu setpin filecrypt /usr/local/bin/
 ```
 
 ## source setpin: Set PIN - without traces
