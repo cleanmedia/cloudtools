@@ -1,5 +1,5 @@
 # cloudtools
-make working with or in the cloud easier
+make working with or in the cloud easier and more confidential
 
 ## Install All
 ```bash
