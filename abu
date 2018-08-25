@@ -1,0 +1,90 @@
+#!/bin/bash
+
+CMD=$1
+NAM=$2
+
+BUCK=cmabu
+set +x
+
+usage() {
+  echo "usage: abu [scbdr] <dirname>"
+  echo "means [show|compress and encrypt only|backup local dir to s3|delete on s3|restore from s3]"
+  exit 1
+}
+
+check_awsconfig() {
+  if [ ! -f ~/.aws/config ]; then
+    echo "Please define your AWS CLI profile in ~/.aws/config"
+    exit 1
+  fi
+}
+
+check_input() {
+  if [ "$CMD" == "" ]; then
+    usage
+  fi
+
+  if [ "$NAM" == "" -a "$CMD" != "s" ]; then
+    usage
+  fi
+}
+
+ask_pin() {
+  echo "Enter PIN:"
+  read -s PIN
+}
+
+check_pin() {
+  if [ "$PIN" == "" ]; then
+    ask_pin
+  fi
+}
+
+compressdir() {
+  check_pin
+  tar czvf ${NAM}.tgz . --exclude=.terraform --exclude-vcs-ignores
+  7z a -p${PIN} ${NAM}.7z ${NAM}.tgz
+  rm ${NAM}.tgz
+}
+
+sends3() {
+  aws s3 cp ${NAM}.7z s3://${BUCK}/
+  rm ${NAM}.7z
+}
+
+dels3() {
+  aws s3 rm s3://${BUCK}/${NAM}.7z
+}
+
+restores3() {
+  aws s3 cp s3://${BUCK}/${NAM}.7z .
+  7z e -p${PIN} ${NAM}.7z
+  tar xzvf ${NAM}.tgz
+  rm ${NAM}.7z ${NAM}.tgz
+}
+
+
+# BEGIN MAIN SCRIPT
+
+check_awsconfig
+check_input
+
+case "$CMD" in
+  b) check_pin
+     compressdir
+     sends3
+     ;;
+  c) check_pin
+     compressdir
+     ;;
+  d) dels3
+     ;;
+  r) check_pin
+     restores3
+     ;;
+  s) aws s3 ls s3://${BUCK}/
+     ;;
+  *) usage
+     ;;
+esac
+
