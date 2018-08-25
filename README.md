@@ -1,15 +1,50 @@
 # cloudtools
 make working with or in the cloud easier
 
-## Install
+## Install All
 ```bash
 git clone https://github.com/cleanmedia/cloudtools.git
 ```
 
-By the way, the short name 'abu' means AWS Backup.
+## source spi: Set PIN - without traces
+
+### Example
+
+Put a Password (PIN) into the bash environment - without leaving traces:
+```bash
+source spi
+```
+
+* It will ask for a new PIN, if the bash variable $PIN is empty.
+* Otherwise it will confirm, that the PIN was already set priviously.
 
 
-## Prerequisites
+## fcr: File Crypt - Script to compress-encrypt/check/decompress-decrypt a File
+
+### Example
+
+* Compress a file containing secrets
+* encrypt it using the secret from the PIN environment variable
+* and delete the plain text version
+* store the file as filename.enc.7z
+
+```bash
+fcr e filename
+```
+
+* Decompress/Decrypt filename.enc.7z
+* using the PIN variable (or ask for it)
+* keep the plain text filename
+* delete filename.enc.7z
+
+```bash
+fcr d filename.enc.7z
+```
+
+
+## abu: AWS Backup - Local Directory to S3
+
+### Prerequisites
 
 * AWS User and access to its S3 service.
 * some kind of Linux and the AWS CLI package
@@ -21,8 +56,9 @@ By the way, the short name 'abu' means AWS Backup.
 * As for example Ablibtnlaci10t!
 * Meaning the initials of the sentence:
 * A bad life is better than no life and can improve 10 times!
+* You can use the command "source spi" to set the PIN only once and reuse it many times.
 
-## Examples
+### Examples
 
 Show the contents of my backup bucket:
 ```bash
@@ -44,8 +80,9 @@ Delete th S3 object dirname.7z from the backup bucket.
 abu d dirname
 ```
 
-
 Compress the local directory only and encrypt it and store it as dirname.7z.
 ```bash
 abu c dirname
 ```
+
+

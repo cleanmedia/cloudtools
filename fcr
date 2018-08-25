@@ -3,12 +3,11 @@
 CMD=$1
 FIL=$2
 
-BUCK=cmabu
 set +x
 
 usage() {
-  echo "usage: ccr [edc] <filname>"
-  echo "means [encrypt|decrypt|check] filename"
+  echo "usage: fcr [edc] <filname>"
+  echo "description: [encrypt|decrypt|check] filename"
   exit 1
 }
 
