@@ -50,6 +50,8 @@ AWS Backup - Local Directory to S3
 
 ### Prerequisites
 
+* Igor Pavlov's 7z command line utility:
+* apt-get install p7zip-full # for ubuntu
 * AWS User and access to its S3 service.
 * some kind of Linux and the AWS CLI package
 * define ~/.aws/config defaults

@@ -6,7 +6,7 @@ CMD=$1
 NAM=$2
 
 BUCK=cmabu
-set +x
+set -e
 
 usage() {
   echo "usage:"
@@ -51,7 +51,7 @@ check_pin() {
 
 compressdir() {
   check_pin
-  tar czvf ../${NAM}.tgz . --exclude=.terraform --exclude-vcs-ignores
+  tar czvf ../${NAM}.tgz . --exclude=.terraform --exclude-vcs
   7z a -p${PIN} ${NAM}.7z ../${NAM}.tgz
   rm ../${NAM}.tgz
 }

@@ -5,5 +5,13 @@
 echo "Enter PIN:"
 read -s PIN
 
-export PIN
+echo "Please enter PIN again to verify:"
+read -s PIN2
+
+if [ "$PIN" == "$PIN2" ]; then
+  export PIN
+  echo "Done: PIN set"
+else
+  echo "Failed: PIN's are not equal"
+fi
 
