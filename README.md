@@ -4,8 +4,9 @@ make working with or in the cloud easier and more confidential
 ## Install All
 ```bash
 git clone https://github.com/cleanmedia/cloudtools.git
-mkdir -p /usr/local/bin
-cd cloudtools; sudo cp abu setpin filecrypt /usr/local/bin/
+cd cloudtools
+./install.sh
+# it will just put the 3 tools to /usr/local/bin
 ```
 
 ## source setpin
@@ -51,18 +52,18 @@ AWS Backup - Local Directory to S3
 ### Prerequisites
 
 * Igor Pavlov's 7z command line utility:
-* apt-get install p7zip-full # for ubuntu
+   * apt-get install p7zip-full # for ubuntu
 * AWS User and access to its S3 service.
-* some kind of Linux and the AWS CLI package
-* define ~/.aws/config defaults
+   * incl. some kind of Linux and the AWS CLI package
+   * incl. defined ~/.aws/config defaults
 * A bucket for those backups only:
-* aws s3 mb s3://${my-global-folder-backup-bucket-name}
+   * aws s3 mb s3://${my-global-folder-backup-bucket-name}
 * Edit your global bucket name vaiable 'BUCK' in the file abu.
 * Have a PIN ready in your mind, that you don't forget but is safe and unique.
-* As for example Ablibtnlaci10t!
-* Meaning the initials of the sentence:
-* A bad life is better than no life and can improve 10 times!
-* You can use the command "source setpin" to set the PIN only once and reuse it many times.
+   * As for example Ablibtnlaci10t!
+   * Meaning the initials of the sentence:
+   * A bad life is better than no life and can improve 10 times!
+   * You can use the command "source setpin" to set the PIN only once and reuse it many times.
 
 ### Examples
 
@@ -76,7 +77,7 @@ Compress and encrypt the current local directory, and send it as objname.7z to t
 abu b objname
 ```
 
-Restore the object objname.7z from the S3 bucket to the local directory and decrypt/unpack it.
+Restore the object objname.7z from the S3 bucket to the local subdirectory objname and decrypt/unpack it.
 ```bash
 abu r objname
 ```

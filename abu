@@ -15,9 +15,10 @@ usage() {
   echo "abu c objname # compress and encrypt only my local folder into ../objname.7z"
   echo "abu b objname # backup (compress/encrypt) local folder and store it in S3 backup bucket objname.7z"
   echo "abu d objname # delete objname.7z from S3 backup bucket"
-  echo "abu r objname # restore objname.7z from S3 folder backup bucket and decrypt/decompress it into the current local folder"
-  echo
-  echo "attention: restore will unconditionally overwrite existing local files and folders without asking"
+  echo "abu r objname # restore objname.7z from S3 folder backup bucket"
+  echo "              # and decrypt/decompress it into the current local subfolder objname"
+  echo "ATTENTION:"
+  echo "restore will unconditionally overwrite existing local objects with the same name without asking"
   exit 1
 }
 
@@ -66,10 +67,13 @@ dels3() {
 }
 
 restores3() {
+  mkdir -p ${NAM}
+  cd ${NAM}
   aws s3 cp s3://${BUCK}/${NAM}.7z .
   7z e -p${PIN} ${NAM}.7z
   tar xzvf ${NAM}.tgz
   rm ${NAM}.7z ${NAM}.tgz
+  cd ..
 }
 
 
